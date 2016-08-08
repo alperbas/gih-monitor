@@ -78,7 +78,7 @@ function check_domain() {
 
 function send_result() {
 
-    /usr/bin/perl /usr/local/bin/sendmail.pl $logfolder $logfile
+    /usr/bin/perl $profilefolder/sendmail.pl $logfolder $logfile
 
 }
 
@@ -112,8 +112,10 @@ for profile in $(ls $home/$profilefolder); do
         else
             echo "$profile profili icin $counter sorguda sorun var." | tee -a $logfolder/$logfile
             printf "$result" | tee -a $logfolder/$logfile
-            echo "-------------------------------------------------"
+            echo "-------------------------------------------------" | tee -a $logfolder/$logfile
         fi
 done
+
+send_result
 
 exit 0
