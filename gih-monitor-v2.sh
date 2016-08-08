@@ -75,6 +75,12 @@ function check_domain() {
     return 1
 }
 
+function send_result() {
+
+    /usr/bin/perl /usr/local/bin/sendmail.pl $logfolder $logfile
+
+}
+
 
 for profile in $(ls $profilefolder); do
         echo "$profilefolder/$profile"
