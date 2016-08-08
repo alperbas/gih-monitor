@@ -84,7 +84,7 @@ function send_result() {
 
 
 for profile in $(ls $home/$profilefolder); do
-        $count=$(cat $profilefolder/$profile | wc -l)
+        count=$(cat $profilefolder/$profile | wc -l)
         echo "$profilefolder/$profile profili icin $count sorgu yapıldı."
         counter=0
         result=""
