@@ -1,6 +1,7 @@
 #!/bin/bash
 
-profilefolder="/usr/local/bin/profiles"
+home="/usr/local/bin/gih-monitor/"
+profilefolder="profiles"
 
 logfolder="/var/log/gih-monitor"
 logfile="gih-monitor-log-$year$month$day.txt"
@@ -82,7 +83,7 @@ function send_result() {
 }
 
 
-for profile in $(ls $profilefolder); do
+for profile in $(ls $home/$profilefolder); do
         echo "$profilefolder/$profile"
         counter=0
         result=""
