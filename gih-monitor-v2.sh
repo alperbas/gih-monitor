@@ -18,31 +18,31 @@ function check_domain() {
         ;;
         aile-oyun)
             dns="193.192.98.51"
-            yip="193.192.98.46"
+            yip="193.192.98.45"
         ;;
         aile-sohbet)
             dns="193.192.98.54"
-            yip="193.192.98.47"
+            yip="193.192.98.43"
         ;;
         aile-sosyal)
             dns="193.192.98.56"
-            yip="193.192.98.48"
+            yip="193.192.98.42"
         ;;
         aile+oyun+sohbet)
             dns="193.192.98.52"
-            yip="193.192.98.42"
+            yip="193.192.98.48"
         ;;
         aile+sosyal+oyun)
             dns="193.192.98.57"
-            yip="193.192.98.43"
+            yip="193.192.98.47"
         ;;
         aile+sohbet+sosyal)
             dns="193.192.98.55"
-            yip="193.192.98.45"
+            yip="193.192.98.46"
         ;;
         aile+oyun+sohbet+sosyal)
             dns="193.192.98.20"
-            yip="193.192.98.41"
+            yip="193.192.98.49"
         ;;
         cocuk)
             dns="193.192.98.58"
