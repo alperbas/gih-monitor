@@ -78,14 +78,14 @@ for profile in $(ls $profilefolder); do
         while read profil y ydomain i idomain; do
                 ycheck=$(check_domain $profil $ydomain)
                 if [ $? != 2 ]; then
-                    yresult="$profile profilinde yasakli olmasi gereken $ydomain erisilebilir. - $ycheck"
+                    yresult="$profile profilinde yasakli olmasi gereken $ydomain erisilebilir. - Cozulen adres: $ycheck"
                     #echo "$yresult"
                     result="$result$yresult\n"
                     let counter=$counter+1
                 fi
                 icheck=$(check_domain $profil $idomain)
                 if [ $? != 4 ]; then
-                    iresult="$profile profilinde izinli olmasi gereken $idomain yasakli. - $icheck"
+                    iresult="$profile profilinde izinli olmasi gereken $idomain yasakli. - Cozulen adres: $icheck"
                     #echo "$iresult"
                     result="$result$iresult\n"
                     let counter=$counter+1
