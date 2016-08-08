@@ -2,11 +2,11 @@
 
 home="/usr/local/bin/gih-monitor/"
 profilefolder="profiles"
-
+eval `date "+day=%d; month=%m; year=%Y"`
 logfolder="/var/log/gih-monitor"
 logfile="gih-monitor-log-$year$month$day.txt"
 
-eval `date "+day=%d; month=%m; year=%Y"`
+
 
 function check_domain() {
     # $1 = profil
