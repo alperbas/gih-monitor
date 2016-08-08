@@ -84,7 +84,8 @@ function send_result() {
 
 
 for profile in $(ls $home/$profilefolder); do
-        echo "$profilefolder/$profile"
+        $count=$(cat $profilefolder/$profile | wc -l)
+        echo "$profilefolder/$profile profili icin $count sorgu yapıldı."
         counter=0
         result=""
         while read profil y ydomain i idomain; do
@@ -109,7 +110,7 @@ for profile in $(ls $home/$profilefolder); do
         if [ $counter == 0 ]; then
             echo "$profile profilinde sorun yok." | tee -a $logfolder/$logfile
         else
-            echo "$profile icin $counter sorguda sorun var." | tee -a $logfolder/$logfile
+            echo "$profile profili icin $counter sorguda sorun var." | tee -a $logfolder/$logfile
             printf "$result" | tee -a $logfolder/$logfile
         fi
 done
