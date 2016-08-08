@@ -14,7 +14,7 @@ function check_domain() {
     case "$1" in
         aile)
             dns="193.192.98.59"
-            yip="193.192.98.49"
+            yip="193.192.98.41"
         ;;
         aile-oyun)
             dns="193.192.98.51"
