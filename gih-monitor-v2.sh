@@ -106,10 +106,10 @@ for profile in $(ls $profilefolder); do
         done < $profilefolder/$profile
 
         if [ $counter == 0 ]; then
-            echo "$profile profilinde sorun yok."
+            echo "$profile profilinde sorun yok." | tee $logfolder/$logfile
         else
-            printf "$result"
-            echo "$counter sorguda sorun var."
+            printf "$result" | tee $logfolder/$logfile
+            echo "$counter sorguda sorun var." | tee $logfolder/$logfile
         fi
 done
 
