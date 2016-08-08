@@ -1,6 +1,11 @@
 #!/bin/bash
 
-profilefolder="profiles"
+profilefolder="/usr/local/bin/profiles"
+
+logfolder="/var/log/gih-monitor"
+logfile="gih-monitor-log-$year$month$day.txt"
+
+eval `date "+day=%d; month=%m; year=%Y"`
 
 function check_domain() {
     # $1 = profil
