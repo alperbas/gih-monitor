@@ -17,27 +17,27 @@ function check_domain() {
             yip="193.192.98.41"
         ;;
         aile-oyun)
-            dns="193.192.98.51"
+            dns="193.192.98.55"
             yip="193.192.98.45"
         ;;
         aile-sohbet)
-            dns="193.192.98.54"
+            dns="193.192.98.57"
             yip="193.192.98.43"
         ;;
         aile-sosyal)
-            dns="193.192.98.56"
+            dns="193.192.98.52"
             yip="193.192.98.42"
         ;;
         aile+oyun+sohbet)
-            dns="193.192.98.52"
+            dns="193.192.98.56"
             yip="193.192.98.48"
         ;;
         aile+sosyal+oyun)
-            dns="193.192.98.57"
+            dns="193.192.98.54"
             yip="193.192.98.47"
         ;;
         aile+sohbet+sosyal)
-            dns="193.192.98.55"
+            dns="193.192.98.51"
             yip="193.192.98.46"
         ;;
         aile+oyun+sohbet+sosyal)
@@ -78,7 +78,7 @@ function check_domain() {
 
 function send_result() {
 
-    /usr/bin/perl $profilefolder/sendmail.pl $logfolder $logfile
+    /usr/bin/perl $home/sendmail.pl $logfolder $logfile
 
 }
 
