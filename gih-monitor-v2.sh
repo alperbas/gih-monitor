@@ -78,7 +78,7 @@ function check_domain() {
 
 function send_result() {
 
-    /usr/bin/perl $home/sendmail.pl $logfolder $logfile
+    /usr/bin/perl $home/sendmail.pl $logfolder/$logfile $logfile
 
 }
 
