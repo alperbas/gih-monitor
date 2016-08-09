@@ -117,7 +117,7 @@ for profile in $(ls $home/$profilefolder); do
             printf "$profile profili icin $counter sorguda sorun var.\n" | tee -a $logfolder/$logfile
             printf "$result"                                           | tee -a $logfolder/$logfile
             echo "-------------------------------------------------" | tee -a $logfolder/$logfile
-            BRESULT=$(printf " <tr><td> $profile </td><td> HATA </td><td> $result </td></tr>\n")
+            BRESULT=$(printf " <tr><td> $profile </td><td> ERR </td><td> $result </td></tr>\n")
 
         fi
         BODY=$BODY$BRESULT
