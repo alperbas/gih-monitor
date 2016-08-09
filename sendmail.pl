@@ -1,32 +1,26 @@
 #!/usr/bin/perl
-
+use strict;
 use MIME::Lite;
 
-my $attachpath = $ARGV[0];
-chomp($attachpath);
+my $body = $ARGV[0];
+chomp($body);
 
-my $attachfile = $ARGV[1];
-chomp($attachfile);
+my $data = $body;
 
-$msg = MIME::Lite->new(
+
+my $msg = MIME::Lite->new(
     From    => 'gih-monitor@turk.net',
 #    To      => 'sistem@turknet.net.tr, alper.bassarac@turknet.net.tr',
     To      => 'vahit.tabak@turknet.net.tr, alper.bassarac@turknet.net.tr',
-##  Cc      => 'tardu.demirel@turknet.net.tr',
-    Subject => 'Guvenli Internet Kontrol Sonuclari Bilgisi',
-    Type    => 'multipart/mixed'
+#    Cc      => 'tardu.demirel@turknet.net.tr',
+    Subject => 'Güvenli İnternet Hizmeti Günlük Kontrol Raporu',
+    Type    => 'text/html',
+    Data    => $data
+);
+$msg->attach(
+    Type     => 'HTML',
+    Data     => $data
 );
 
-### Add parts (each "attach" has same arguments as "new"):
-$msg->attach(
-    Type     => 'TEXT',
-    Data     => "Guvenli internet kontrol sonuclari ekte bulunmaktadir."
-);
-$msg->attach(
-    Type     => 'image/gif',
-    Path     => "$attachpath",
-    Filename => "$attachfile",
-    Disposition => 'attachment'
-);
 ### use Net:SMTP to do the sending
 $msg->send('smtp','193.192.100.230', Debug=>0 );
