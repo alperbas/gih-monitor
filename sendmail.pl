@@ -17,10 +17,10 @@ my $msg = MIME::Lite->new(
     Type    => 'text/html',
     Data    => $data
 );
-$msg->attach(
-    Type     => 'HTML',
-    Data     => $data
-);
+#$msg->attach(
+#    Type     => 'HTML',
+    #Data     => $data
+#);
 
 ### use Net:SMTP to do the sending
 $msg->send('smtp','193.192.100.230', Debug=>0 );
