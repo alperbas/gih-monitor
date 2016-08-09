@@ -78,29 +78,31 @@ function check_domain() {
 
 function send_result() {
 
-    /usr/bin/perl $home/sendmail.pl $logfolder/$logfile $logfile
+    /usr/bin/perl $home/sendmail.pl "$HTML"
 
 }
 
-
+BODY=""
 for profile in $(ls $home/$profilefolder); do
         count=$(cat $profilefolder/$profile | wc -l)
-        echo "$profilefolder/$profile profili icin $count sorgu yapıldı."
+        let count=$count*2
+        printf "$profilefolder/$profile profili icin $count sorgu yapıldı.\n" | tee -a $logfolder/$logfile
+        #BODY="$BODY$profilefolder/$profile profili icin $count sorgu yapıldı.\n"
         counter=0
         result=""
         while read profil y ydomain i idomain; do
                 ycheck=$(check_domain $profil $ydomain)
                 if [ $? != 2 ]; then
-                    yresult="   $profile profilinde yasakli olmasi gereken $ydomain erisilebilir. - Cozulen adres: $ycheck"
+                    yresult="   Yasakli olmasi gereken $ydomain erisilebilir. - Cozulen adres: $ycheck"
                     #echo "$yresult"
-                    result="$result$yresult\n"
+                    result="$result$yresult\n<br>"
                     let counter=$counter+1
                 fi
                 icheck=$(check_domain $profil $idomain)
                 if [ $? != 4 ]; then
-                    iresult="   $profile profilinde izinli olmasi gereken $idomain yasakli. - Cozulen adres: $icheck"
+                    iresult="   İzinli olmasi gereken $idomain yasakli. - Cozulen adres: $icheck"
                     #echo "$iresult"
-                    result="$result$iresult\n"
+                    result="$result$iresult\n<br>"
                     let counter=$counter+1
                 fi
                 #result="$result$yresult\n$iresult\n"
@@ -108,14 +110,42 @@ for profile in $(ls $home/$profilefolder); do
         done < $profilefolder/$profile
 
         if [ $counter == 0 ]; then
-            echo "$profile profilinde sorun yok." | tee -a $logfolder/$logfile
+            printf "$profile profilinde sorun yok.\n" | tee -a $logfolder/$logfile
             echo "-------------------------------------------------" | tee -a $logfolder/$logfile
+            BRESULT=$(printf " <tr><td> $profile </td><td> OK </td><td> </td></tr>\n")
         else
-            echo "$profile profili icin $counter sorguda sorun var." | tee -a $logfolder/$logfile
-            printf "$result" | tee -a $logfolder/$logfile
+            printf "$profile profili icin $counter sorguda sorun var.\n" | tee -a $logfolder/$logfile
+            printf "$result"                                           | tee -a $logfolder/$logfile
             echo "-------------------------------------------------" | tee -a $logfolder/$logfile
+            BRESULT=$(printf " <tr><td> $profile </td><td> HATA </td><td> $result </td></tr>\n")
+
         fi
+        BODY=$BODY$BRESULT
 done
+
+#echo $BODY
+
+HTML="<style type=\"text/css\">
+ table.tableizer-table {
+  font-size: 12px;
+  border: 1px solid #CCC;
+  font-family: Arial, Helvetica, sans-serif;
+ }
+ .tableizer-table td {
+  padding: 4px;
+  margin: 3px;
+  border: 1px solid #CCC;
+ }
+ .tableizer-table th {
+  background-color: #104E8B;
+  color: #FFF;
+  font-weight: bold;
+ }
+</style>
+<table class=\"tableizer-table\">
+<thead><tr class=\"tableizer-firstrow\"><th>GÜVENLİ İNTERNET PROFİLLERİ</th><th>DURUM</th><th>HATA NEDENİ/LOGU</th></tr></thead><tbody>
+ $BODY
+</tbody></table>"
 
 send_result
 
