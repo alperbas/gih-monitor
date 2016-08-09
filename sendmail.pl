@@ -10,10 +10,10 @@ my $data = $body;
 
 my $msg = MIME::Lite->new(
     From    => 'gih-monitor@turk.net',
-#    To      => 'sistem@turknet.net.tr, alper.bassarac@turknet.net.tr',
-    To      => 'vahit.tabak@turknet.net.tr, alper.bassarac@turknet.net.tr',
-#    Cc      => 'tardu.demirel@turknet.net.tr',
-    Subject => 'Güvenli İnternet Hizmeti Günlük Kontrol Raporu',
+#    To      => 'mdy@turknet.net.tr, networkoperasyon@turknet.net.tr, noc@turknet.net.tr',
+    To      => 'ersin.ozdemir@turknet.net.tr, ahmet.coban@turknet.net.tr, murat.oguz@turknet.net.tr, busra.keles@turknet.net.tr',
+    Cc      => 'vahit.tabak@turknet.net.tr, alper.bassarac@turknet.net.tr',
+    Subject => 'Guvenli Internet Hizmeti Gunluk Kontrol Raporu',
     Type    => 'text/html',
     Data    => $data
 );
