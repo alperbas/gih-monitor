@@ -5,9 +5,10 @@ use MIME::Lite;
 my $body = $ARGV[0];
 my $result = $ARGV[1];
 chomp($body);
+chomp($result);
 
 my $data = $body;
-my $subject = "Guvenli Internet Hizmeti Gunluk Kontrol Raporu - $result",
+my $subject = "Guvenli Internet Hizmeti Gunluk Kontrol Raporu - $result";
 
 my $msg = MIME::Lite->new(
     From    => 'gih-monitor@turk.net',
