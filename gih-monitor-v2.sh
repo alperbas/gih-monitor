@@ -78,11 +78,12 @@ function check_domain() {
 
 function send_result() {
 
-    /usr/bin/perl $home/sendmail.pl "$HTML"
+    /usr/bin/perl $home/sendmail.pl "$HTML" "$STATUS"
 
 }
 
 BODY=""
+STATUS="OK"
 for profile in $(ls $home/$profilefolder); do
         count=$(cat $profilefolder/$profile | wc -l)
         let count=$count*2
@@ -118,6 +119,7 @@ for profile in $(ls $home/$profilefolder); do
             printf "$result"                                           | tee -a $logfolder/$logfile
             echo "-------------------------------------------------" | tee -a $logfolder/$logfile
             BRESULT=$(printf " <tr><td> $profile </td><td> ERR </td><td> $result </td></tr>\n")
+            STATUS="ERR"
 
         fi
         BODY=$BODY$BRESULT
